@@ -14,7 +14,7 @@ spec:
         app: myfirstproject
     spec:
       containers:
-        - image: my-first-project:latest
+        - image: my-first-project:v1
           name: myfirstproject
           imagePullPolicy: Never
           ports:
