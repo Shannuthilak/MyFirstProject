@@ -14,7 +14,8 @@ spec:
         app: myfirstproject
     spec:
       containers:
-        - image: localhost:8081/my-first-project:latest
+        - image: my-first-project:latest
           name: myfirstproject
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
