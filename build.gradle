@@ -21,7 +21,7 @@ configurations {
 }
 
 bootJar {
-    archiveFileName = 'fist-project-java.jar'
+    archiveFileName = 'first-project-java.jar'
 }
 
 jar {

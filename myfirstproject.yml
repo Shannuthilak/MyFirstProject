@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myfirstproject
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: myfirstproject
+  template:
+    metadata:
+      labels:
+        app: myfirstproject
+    spec:
+      containers:
+        - image: localhost:8081/my-first-project:latest
+          name: myfirstproject
+          ports:
+            - containerPort: 80
