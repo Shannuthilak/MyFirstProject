@@ -1,10 +1,26 @@
+# --- PART 1: THE SERVICE (The Entrance) ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-first-service
+  namespace: myfirstapp
+spec:
+  type: LoadBalancer
+  selector:
+    app: myfirstproject  # This tells the Service which Pods to send traffic to
+  ports:
+    - port: 8081
+      targetPort: 8081
+      protocol: TCP
+---
+# --- PART 2: THE DEPLOYMENT (The App) ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: myfirstproject
+  namespace: myfirstapp
 spec:
   replicas: 1
-  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: myfirstproject
@@ -14,8 +30,8 @@ spec:
         app: myfirstproject
     spec:
       containers:
-        - image: my-first-project:v1
-          name: myfirstproject
+        - name: myfirstproject
+          image: my-first-project:v1
           imagePullPolicy: Never
           ports:
-            - containerPort: 80
+            - containerPort: 8081  # Fixed this to 8081 to match your app
